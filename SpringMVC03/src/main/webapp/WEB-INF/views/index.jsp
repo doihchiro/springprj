@@ -24,10 +24,10 @@
 <div class="container">
 <jsp:include page="common/header.jsp"/>
   <div class="panel panel-default">
-<%--     <div>
-       <img src="${contextPath}/resources/images/640.jpg" style="width: 100%; height: 400px;"/>
-    </div> --%>
-    <div class="panel-body">
+    <div>
+       <img src="${contextPath}/resources/images/c.png" style="width: 294px; height: 294px; display: block; margin: 0 auto;" />
+    </div>
+	<div class="panel-body">
 		<ul class="nav nav-tabs">
 		  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 		  <li><a data-toggle="tab" href="#menu1">게시판</a></li>

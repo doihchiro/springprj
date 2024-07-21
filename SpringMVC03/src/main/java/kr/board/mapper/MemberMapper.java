@@ -12,5 +12,6 @@ import kr.board.entity.Member;
 public interface MemberMapper {
 	Member registerCheck(String memID);
 	int register(Member member); // 회원등록(성공1, 실패0)
-	Member memLogin(Member member); // 로그인 체크
+	Member memLogin(Member member);
+	int memUpdate(Member member);// 로그인 체크
 }
