@@ -30,10 +30,10 @@
 	            <li><a href="${contextPath}/memLogout.do"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>            
 	            <c:if test="${!empty mvo}">
 			    <c:if test="${mvo.memProfile eq ''}">
-			      <li><img class="img-circle" src="${contextPath}/resources/images/person.PNG" style="width: 50px; height: 50px"/> ${mvo.memName} 님Welcome.</li>
+			      <li><img class="img-circle" src="${contextPath}/resources/images/images.jpg" style="width: 45px; height: 45px"/> ${mvo.memName} 님Welcome.</li>
 			    </c:if>
 			    <c:if test="${mvo.memProfile ne ''}">
-			      <li><img class="img-circle" src="${contextPath}/resources/upload/${mvo.memProfile}" style="width: 50px; height: 50px"/> ${mvo.memName} 님Welcome.</li>
+			      <li><img class="img-circle" src="${contextPath}/resources/upload/${mvo.memProfile}" style="width: 45px; height: 45px"/> ${mvo.memName} 님Welcome.</li>
 			    </c:if>			  
 			  </c:if>
 	      </ul>

@@ -14,4 +14,6 @@ public interface MemberMapper {
 	int register(Member member); // 회원등록(성공1, 실패0)
 	Member memLogin(Member member);
 	int memUpdate(Member member);// 로그인 체크
+	Member getMember(String memID);
+	void memProfileUpdate(Member member);
 }
