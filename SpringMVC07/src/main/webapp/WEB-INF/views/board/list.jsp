@@ -91,13 +91,13 @@
             <td>${vo.count}</td>
           </tr>
         </c:forEach>
-        <%-- <c:if test=""> --%> 
+        <c:if test="${!empty mvo}"> 
         <tr>
           <td colspan="5">
             <button id="regBtn" class="btn btn-sm btn-primary pull-right">글쓰기</button>            
           </td>
         </tr>
-        <%-- </c:if> --%>        
+        </c:if>        
       </table>
       <!-- Modal 추가 -->
 	  <div id="myModal" class="modal fade" role="dialog">

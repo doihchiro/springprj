@@ -3,7 +3,7 @@
 <mapper namespace="kr.board.mapper.BoardMapper">
 
 	<select id="getList" resultType="kr.board.entity.Board">
-		select * from tblBoard order by boardGroup desc
+		SELECT * FROM tblBoard order by boardGroup desc
 	</select>
 	
 	<insert id="insert" parameterType="kr.board.entity.Board">
@@ -15,15 +15,20 @@
 	
 	<insert id="insertSelectKey" parameterType="kr.board.entity.Board">
     	<selectKey keyProperty="idx,boardGroup" resultType="kr.board.entity.Board" order="BEFORE">
-        	select IFNULL(max(idx)+1, 1) as idx, 
+        	SELECT IFNULL(max(idx)+1, 1) as idx, 
         		   IFNULL(max(boardGroup)+1, 0) as boardGroup
-        	from tblBoard      
+        	FROM tblBoard      
     	</selectKey>
     	     
 		INSERT INTO 
 			tblBoard(idx,memID,title,content,writer,boardGroup,boardSequence,boardLevel,boardAvailable)
 		VALUES(#{idx},#{memID},#{title},#{content},#{writer},#{boardGroup},0,0,1)	     
 	</insert>
+	
+	
+	<select id="login" parameterType="kr.board.entity.Member" resultType="kr.board.entity.Member">
+		SELECT * FROM tblMember WHERE memID = #{memID} and memPwd = #{memPwd}
+	</select>
 
 <!-- 	
 	

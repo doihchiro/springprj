@@ -9,6 +9,9 @@ create table myboard(
 	primary key(idx)
 );
 
+select * from myboard;
+
+drop table myboard;
 drop table mem_auth;
 drop table mem_stbl;
 

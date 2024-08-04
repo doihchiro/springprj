@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 
 import kr.board.entity.Board;
+import kr.board.entity.Member;
 
 @Mapper
 public interface BoardMapper {
@@ -13,7 +14,7 @@ public interface BoardMapper {
 	public List<Board> getList();
 	public void insert(Board board);
 	public void insertSelectKey(Board board);
-	
+	public Member login(Member member);
 	
 //	Board boardContent(int idx);
 //	void boardDelete(int idx);

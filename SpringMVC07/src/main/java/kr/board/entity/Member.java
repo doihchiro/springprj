@@ -4,12 +4,11 @@ import lombok.Data;
 
 @Data
 public class Member {
-	private int memIdx; 
-	private String memID;  
-	private String memPassword;
-	private String memName;
-	private int memAge; // <-null, 0
-	private String memGender;
-	private String memEmail;
-	private String memProfile; //사진정보
+	 private String memID;
+	 private String memPwd;
+	 private String memName;
+	 private String memPhone;
+	 private String memAddr;
+	 private double latitude;
+	 private String longitude;
 }
