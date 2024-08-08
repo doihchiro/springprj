@@ -7,6 +7,7 @@ import kr.board.entity.Member;
 
 public interface BoardService {
 	
-	public List<Board> getList();
-	public Member login(Member member);
+	List<Board> getList();
+	Member login(Member member);
+	void register(Board board);
 }

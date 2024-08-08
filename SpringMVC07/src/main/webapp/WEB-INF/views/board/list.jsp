@@ -15,10 +15,26 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   	$(document).ready(function() {
+  		var result = '${result}';
+  		checkModal(result);
+  		
 		$("#regBtn").click(function() {
 			location.href = "${cpath}/board/register";
 		});
+		
 	});
+  	function checkModal(result) {
+		if (result == '') {
+			return;
+		}
+		
+		if (parseInt(result) > 0) {
+			// 새로운 다이얼로그 창 띄우기
+			$(".modal-body").html("게시글 "+parseInt(result)+"번이 등록되었습니다.");
+		}
+		
+		$("#myModal").modal("show");
+	}
   </script>
 </head>
 <body>
