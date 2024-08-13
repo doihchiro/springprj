@@ -16,6 +16,8 @@ public interface BoardMapper {
 	void insertSelectKey(Board board);
 	Member login(Member member);
 	Board read(int idx);
+	void update(Board board);
+	void remove(int idx);
 	
 	
 //	Board boardContent(int idx);

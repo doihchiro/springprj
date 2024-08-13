@@ -11,4 +11,6 @@ public interface BoardService {
 	Member login(Member member);
 	void register(Board board);
 	Board get(int idx);
+	void modify(Board board);
+	void remove(int idx);
 }

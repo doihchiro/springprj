@@ -33,7 +33,15 @@
 	<select id="read" resultType="kr.board.entity.Board">
 		SELECT * FROM tblBoard WHERE idx = #{idx}
 	</select>
+	
+	<update id="update" parameterType="kr.board.entity.Board">
+		UPDATE tblBoard SET title = #{title}, content = #{content}
+		WHERE idx = #{idx}
+	</update>
 
+	<delete id="remove">
+		DELETE FROM tblBoard WHERE idx = #{idx}	
+	</delete>
 <!-- 	
 	
 	<select id="boardContent" resultType="kr.board.entity.Board">
