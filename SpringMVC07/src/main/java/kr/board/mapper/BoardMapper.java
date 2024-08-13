@@ -11,10 +11,12 @@ import kr.board.entity.Member;
 @Mapper
 public interface BoardMapper {
 	
-	public List<Board> getList();
-	public void insert(Board board);
-	public void insertSelectKey(Board board);
-	public Member login(Member member);
+	List<Board> getList();
+	void insert(Board board);
+	void insertSelectKey(Board board);
+	Member login(Member member);
+	Board read(int idx);
+	
 	
 //	Board boardContent(int idx);
 //	void boardDelete(int idx);

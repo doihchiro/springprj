@@ -10,4 +10,5 @@ public interface BoardService {
 	List<Board> getList();
 	Member login(Member member);
 	void register(Board board);
+	Board get(int idx);
 }

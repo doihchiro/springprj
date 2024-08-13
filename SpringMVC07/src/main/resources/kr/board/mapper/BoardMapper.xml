@@ -29,6 +29,10 @@
 	<select id="login" parameterType="kr.board.entity.Member" resultType="kr.board.entity.Member">
 		SELECT * FROM tblMember WHERE memID = #{memID} and memPwd = #{memPwd}
 	</select>
+	
+	<select id="read" resultType="kr.board.entity.Board">
+		SELECT * FROM tblBoard WHERE idx = #{idx}
+	</select>
 
 <!-- 	
 	
