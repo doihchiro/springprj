@@ -3,7 +3,7 @@
 <mapper namespace="kr.board.mapper.BoardMapper">
 
 	<select id="getList" resultType="kr.board.entity.Board">
-		SELECT * FROM tblBoard order by boardGroup desc
+		SELECT * FROM tblBoard order by boardGroup desc, boardSequence asc
 	</select>
 	
 	<insert id="insert" parameterType="kr.board.entity.Board">
@@ -42,18 +42,21 @@
 	<delete id="remove">
 		DELETE FROM tblBoard WHERE idx = #{idx}	
 	</delete>
-<!-- 	
 	
-	<select id="boardContent" resultType="kr.board.entity.Board">
-		select * from myboard where idx = #{idx}
-	</select>
+	<update id="replySeqUpdate" parameterType="kr.board.entity.Board">
+		UPDATE tblBoard SET boardSequence=boardSequence+1
+		WHERE boardGroup=#{boardGroup} and boardSequence > #{boardSequence}
+	</update>
 	
-	<delete id="boardDelete" parameterType="int">
-		delete from myboard where idx = #{idx}
-	</delete>
+	<insert id="replyInsert" parameterType="kr.board.entity.Board">
+    	<selectKey keyProperty="idx" resultType="kr.board.entity.Board" order="BEFORE">
+        	SELECT IFNULL(max(idx)+1, 1) as idx
+        	FROM tblBoard      
+    	</selectKey>
+    	     
+		INSERT INTO 
+			tblBoard(idx,memID,title,content,writer,boardGroup,boardSequence,boardLevel,boardAvailable)
+		VALUES(#{idx},#{memID},#{title},#{content},#{writer},#{boardGroup},#{boardSequence},#{boardLevel},1)	     
+	</insert>
 	
-	<update id="boardUpdate" parameterType="kr.board.entity.Board">
-		update myboard set title=#{title}, content=#{content}
-		where idx=#{idx}
-	</update> -->
 </mapper>

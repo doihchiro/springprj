@@ -13,4 +13,5 @@ public interface BoardService {
 	Board get(int idx);
 	void modify(Board board);
 	void remove(int idx);
+	void replyProcess(Board board);
 }

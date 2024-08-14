@@ -18,13 +18,6 @@ public interface BoardMapper {
 	Board read(int idx);
 	void update(Board board);
 	void remove(int idx);
-	
-	
-//	Board boardContent(int idx);
-//	void boardDelete(int idx);
-//	void boardUpdate(Board board);
-	
-	//조회수 증가
-//	@Update("update myboard set count=count+1 where idx=#{idx}")
-//	void boardCount(int idx);
+	void replySeqUpdate(Board parent);
+	void replyInsert(Board board);
 }
