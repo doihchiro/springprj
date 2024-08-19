@@ -40,7 +40,7 @@
 	</update>
 
 	<delete id="remove">
-		DELETE FROM tblBoard WHERE idx = #{idx}	
+		UPDATE tblBoard SET boardAvailable = 0 WHERE idx = #{idx}	
 	</delete>
 	
 	<update id="replySeqUpdate" parameterType="kr.board.entity.Board">

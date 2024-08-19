@@ -35,6 +35,9 @@
 		
 		$("#myModal").modal("show");
 	}
+  	function goMsg() {
+		alert("삭제된 게시물입니다.");
+	}
   </script>
 </head>
 <body>
