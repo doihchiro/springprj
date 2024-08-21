@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.board.mapper.BoardMapper">
+
+	<select id="getList" resultType="kr.board.entity.Board" parameterType="kr.board.entity.Criteria">
+		SELECT * FROM tblBoard order by boardGroup desc, boardSequence asc
+		limit #{pageStart}, #{perPageNum} 
+	</select>
+	
+	<insert id="insert" parameterType="kr.board.entity.Board">
+		INSERT INTO tblBoard (idx, memID, title, content, writer, boardGroup, boardSequence, boardLevel, boardAvailable)
+			SELECT IFNULL(MAX(idx) + 1, 1), #{memID}, #{title}, #{content}, #{writer}, 
+			IFNULL(MAX(boardGroup) + 1, 0), 0, 0, 1
+		FROM tblBoard
+	</insert>
+	
+	<insert id="insertSelectKey" parameterType="kr.board.entity.Board">
+    	<selectKey keyProperty="idx,boardGroup" resultType="kr.board.entity.Board" order="BEFORE">
+        	SELECT IFNULL(max(idx)+1, 1) as idx, 
+        		   IFNULL(max(boardGroup)+1, 0) as boardGroup
+        	FROM tblBoard      
+    	</selectKey>
+    	     
+		INSERT INTO 
+			tblBoard(idx,memID,title,content,writer,boardGroup,boardSequence,boardLevel,boardAvailable)
+		VALUES(#{idx},#{memID},#{title},#{content},#{writer},#{boardGroup},0,0,1)	     
+	</insert>
+	
+	
+	<select id="login" parameterType="kr.board.entity.Member" resultType="kr.board.entity.Member">
+		SELECT * FROM tblMember WHERE memID = #{memID} and memPwd = #{memPwd}
+	</select>
+	
+	<select id="read" resultType="kr.board.entity.Board">
+		SELECT * FROM tblBoard WHERE idx = #{idx}
+	</select>
+	
+	<update id="update" parameterType="kr.board.entity.Board">
+		UPDATE tblBoard SET title = #{title}, content = #{content}
+		WHERE idx = #{idx}
+	</update>
+
+	<delete id="remove">
+		UPDATE tblBoard SET boardAvailable = 0 WHERE idx = #{idx}	
+	</delete>
+	
+	<update id="replySeqUpdate" parameterType="kr.board.entity.Board">
+		UPDATE tblBoard SET boardSequence=boardSequence+1
+		WHERE boardGroup=#{boardGroup} and boardSequence > #{boardSequence}
+	</update>
+	
+	<insert id="replyInsert" parameterType="kr.board.entity.Board">
+    	<selectKey keyProperty="idx" resultType="kr.board.entity.Board" order="BEFORE">
+        	SELECT IFNULL(max(idx)+1, 1) as idx
+        	FROM tblBoard      
+    	</selectKey>
+    	     
+		INSERT INTO 
+			tblBoard(idx,memID,title,content,writer,boardGroup,boardSequence,boardLevel,boardAvailable)
+		VALUES(#{idx},#{memID},#{title},#{content},#{writer},#{boardGroup},#{boardSequence},#{boardLevel},1)	     
+	</insert>
+	
+	<select id="totalCount" resultType="int">
+		SELECT count(*) FROM tblBoard
+	</select>
+	
+</mapper>
