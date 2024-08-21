@@ -19,12 +19,12 @@
     		var btn = $(this).data("btn");
     		
     		if (btn == 'reply') {
-    			formData.attr("action", "${cpath}/board/reply")			
+    			formData.attr("action", "${cpath}/board/reply");			
 			} else if (btn == 'modify') {
-				formData.attr("action", "${cpath}/board/modify")
+				formData.attr("action", "${cpath}/board/modify");
 			} else if (btn == "list") {
 				formData.find("#idx").remove();
-				formData.attr("action", "${cpath}/board/list")
+				formData.attr("action", "${cpath}/board/list");
 			}
     		
     		formData.submit();

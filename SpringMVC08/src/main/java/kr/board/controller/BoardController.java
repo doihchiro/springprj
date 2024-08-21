@@ -59,21 +59,25 @@ public class BoardController {
 	}
 	
 	@GetMapping("/modify")
-	public String modify(@RequestParam("idx") int idx, Model model) {
+	public String modify(@RequestParam("idx") int idx, Model model, @ModelAttribute("cri") Criteria cri) {
 		Board vo = boardService.get(idx);
 		model.addAttribute("vo", vo);
 		return "board/modify";
 	}
 	
 	@PostMapping("/modify")
-	public String modify(Board board) {
+	public String modify(Board board, Criteria cri, RedirectAttributes rttr) {
 		boardService.modify(board);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/remove")
-	public String remove(@RequestParam("idx") int idx) {
+	public String remove(@RequestParam("idx") int idx, Criteria cri, RedirectAttributes rttr) {
 		boardService.remove(idx);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		return "redirect:/board/list";
 	}
 	
