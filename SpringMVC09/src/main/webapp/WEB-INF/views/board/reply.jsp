@@ -48,6 +48,10 @@
           <!-- 페이지 유지 추가 -->
           <input type="hidden" name="page" value="${cri.page}">
 		  <input type="hidden" name="perPageNum" value="${cri.perPageNum}">
+		  
+		  <!-- type과 keyword 유지 추가 -->
+		  <input type="hidden" name="type" value="${cri.type}">
+		  <input type="hidden" name="keyword" value="${cri.keyword}">
           
           <!--  idx(원글,부모글) -->
           <input type="hidden" name="idx" value="${vo.idx}"/>
@@ -74,6 +78,8 @@
        <form id="frm1" method="get">
        	  <input type="hidden" name="page" value="${cri.page}">
 		  <input type="hidden" name="perPageNum" value="${cri.perPageNum}">
+		  <input type="hidden" name="type" value="${cri.type}">
+		  <input type="hidden" name="keyword" value="${cri.keyword}">
        </form>
     </div>
     <div class="panel-footer">스프2탄(답변형 게시판 만들기)</div>

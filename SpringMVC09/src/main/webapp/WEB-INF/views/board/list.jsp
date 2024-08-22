@@ -38,6 +38,7 @@
 			var tag = "<input type='hidden' name='idx' value='"+idx+"'/>";
 			pageFrm.append(tag);
 			pageFrm.attr("action", "${cpath}/board/get");
+			pageFrm.attr("method", "get");
 			pageFrm.submit();
 			
 		});
@@ -185,10 +186,12 @@
       
       <!-- END -->
       
-      <form id="pageFrm" action="${cpath}/board/list" method="get">
+      <form id="pageFrm" action="${cpath}/board/list" method="post">
       	<!-- 게시물 번호(idx)추가 -->
       	<input type="hidden" id="page" name="page" value="${pageMaker.cri.page}">
       	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum}">
+      	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+      	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
       </form>
       
       <!-- Modal 추가 -->
