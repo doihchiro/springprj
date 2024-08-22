@@ -82,17 +82,20 @@ public class BoardController {
 	}
 	
 	@GetMapping("/reply")
-	public String reply(@RequestParam("idx") int idx, Model model) {
+	public String reply(@RequestParam("idx") int idx, Model model, @ModelAttribute("cri") Criteria cri) {
 		Board vo = boardService.get(idx);
 		model.addAttribute("vo", vo);
 		return "board/reply";
 	}
 	
 	@PostMapping("/reply")
-	public String reply(Board board) {
+	public String reply(Board board, Criteria cri, RedirectAttributes rttr) {
 		// 답글에 필요한 처리....
 		System.out.println("reply = " + board);
 		boardService.replyProcess(board); // 답글 저장됨
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		
 		return "redirect:/board/list";
 	}
